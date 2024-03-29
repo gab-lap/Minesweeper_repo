@@ -8,6 +8,7 @@ public class Main {
 		finestra.field.ascoltatore.debugPanel = debugPanel;
 		finestra.menuBarListener.finestra = finestra;
 		System.out.println("AKIJHAIJU: " + finestra);
+		//ishdjgbwidugdwugbwiu
 	}
 
 }
