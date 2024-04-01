@@ -23,7 +23,7 @@ public class Finestra extends javax.swing.JFrame implements Serializable{
 	Field field;
 	public JButton smiley = new JButton(new ImageIcon(getClass().getResource("images/smiley.png")));
 	Container contentPane = this.getContentPane();
-	MenuBarListener menuBarListener = new MenuBarListener();
+	public MenuBarListener menuBarListener = new MenuBarListener();
 	public Finestra(int height, int width) {
 		super(titolo);
 		//instantiate & create field

@@ -102,6 +102,9 @@ public class ServerManager implements Runnable {
 					//	System.out.print(newField.grid[row][col].numMines + " "); 
 				}
 			}
+			
+			newField.finestra.menuBarListener = null;
+			
 			System.out.println("\n\n");
 			outputStream.writeUTF("CIAOOOOOOOOOOOOOOOOOOOOO CLIENT");
 			outputStream.flush();

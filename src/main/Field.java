@@ -22,7 +22,7 @@ public class Field extends JFrame implements Serializable, Cloneable{
 	public List<Cell> emptyCells = new ArrayList<>();
 	List<Cell> cantPlace = new ArrayList<>();
 	List<Cell> checkedCells = new ArrayList<>();
-	Finestra finestra;
+	public Finestra finestra;
 	Ascoltatore ascoltatore = new Ascoltatore(this.finestra, this);
 	AscoltatoreMouse ascoltatore_destro = new AscoltatoreMouse(this.finestra, this);
 	public Field(int height, int width, Finestra finestra) {
