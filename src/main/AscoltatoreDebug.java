@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,6 +17,16 @@ import javax.swing.JPanel;
 import main.client_server.ClientHandler;
 import main.client_server.UDPServer;
 
+class Connect extends Thread implements Runnable {
+	DebugPanel debugPanel;
+	Socket Socket;
+	public Connect(DebugPanel debugPanel) {
+		this.debugPanel = debugPanel;
+	}
+	public void start() {
+		UDPServer.debugPanel = debugPanel;
+	}
+}
 
 class StopHosting{
 	DebugPanel debugPanel;
@@ -109,6 +120,7 @@ public class AscoltatoreDebug implements ActionListener, Serializable {
 		Host host = new Host(debugPanel);
 		StopHosting stopHosting = new StopHosting(debugPanel);
 		MultiplayerON multiplayerON = new MultiplayerON(debugPanel);
+		Connect connect = new Connect(debugPanel);
 		
 		if (command.equals("clear") && debugPanel.finestra.field.started)   //REMOVE ! ----------------------------
 			clear.start();
@@ -118,6 +130,8 @@ public class AscoltatoreDebug implements ActionListener, Serializable {
 			stopHosting.start();
 		if (command.equals("multiplayerON") && !debugPanel.finestra.field.started)
 			multiplayerON.start();
+		if (command.equals("connect") && !debugPanel.finestra.field.started)
+			connect.start();
 	}
 
 }
