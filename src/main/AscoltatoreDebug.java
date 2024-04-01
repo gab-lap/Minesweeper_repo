@@ -24,8 +24,14 @@ class Connect extends Thread implements Runnable {
 		this.debugPanel = debugPanel;
 	}
 	public void start() {
-		UDPServer.debugPanel = debugPanel;
-	}
+		UDPClient.debugPanel = debugPanel;
+		try {
+			UDPClient.startClient();
+		} catch (IOException e) {
+			System.out.println("ERROR IN Connect class in AscoltatoreDebug");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	}
 }
 
 class StopHosting{
