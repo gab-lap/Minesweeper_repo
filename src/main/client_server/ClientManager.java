@@ -44,6 +44,7 @@ public class ClientManager implements Runnable {
         while (true) {
         	try {
         		if (won) {
+        			System.out.println("WOOOOOOOOOOOOOOOOOOOOOOON");
             		outputStream.writeUTF("won");
             		outputStream.flush();
             		won = false;
@@ -75,7 +76,6 @@ public class ClientManager implements Runnable {
 							e.printStackTrace();
 						}
 						System.out.println("FIELD READ");
-						break;
 					}
         	receivingData = false;
 				} // if (inputStream is available

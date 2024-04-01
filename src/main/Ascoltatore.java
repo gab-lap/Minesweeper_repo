@@ -165,10 +165,14 @@ public class Ascoltatore implements ActionListener, Serializable{
 			System.out.println("Field.checkedCells.size(): " + field.checkedCells.size());
 			System.out.println("(field.height * field.width) - field.numMines: " + ((field.height * field.width) - field.numMines));
 			if (field.checkedCells.size() == (field.height * field.width) - field.numMines) {
-				if (field.multiplayer)
+				if (field.multiplayer) {
+					System.out.println("server won");
 					ServerManager.won = true;
-				else
+				}
+				else {
+					System.out.println("client won");
 					ClientManager.won = true;
+				}
 				field.endGame();
 				field.finestra.smiley.setIcon(new ImageIcon(getClass().getResource("images/cool.png")));
 				JOptionPane.showMessageDialog(null, "You Won");        //WIN   //IF ANY OTHER THING OTHER THAN MINES IS FLAGGED CANT WIN
