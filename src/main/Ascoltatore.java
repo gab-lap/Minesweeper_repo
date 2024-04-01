@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
+import main.client_server.ClientManager;
+import main.client_server.ServerManager;
+
 class RevealCells{
 	Finestra finestra;
 	Cell cell;
@@ -162,6 +165,10 @@ public class Ascoltatore implements ActionListener, Serializable{
 			System.out.println("Field.checkedCells.size(): " + field.checkedCells.size());
 			System.out.println("(field.height * field.width) - field.numMines: " + ((field.height * field.width) - field.numMines));
 			if (field.checkedCells.size() == (field.height * field.width) - field.numMines) {
+				if (field.multiplayer)
+					ServerManager.won = true;
+				else
+					ClientManager.won = true;
 				field.endGame();
 				field.finestra.smiley.setIcon(new ImageIcon(getClass().getResource("images/cool.png")));
 				JOptionPane.showMessageDialog(null, "You Won");        //WIN   //IF ANY OTHER THING OTHER THAN MINES IS FLAGGED CANT WIN

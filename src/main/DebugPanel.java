@@ -7,7 +7,7 @@ import javax.swing.*;
 public class DebugPanel extends JFrame implements Serializable{
 	private static final long serialVersionUID = 1L;
 	static final String titolo = "Debug Panel";
-	Finestra finestra;
+	public Finestra finestra;
 	transient Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/debug.png"));
 	AscoltatoreDebug ascoltatore = new AscoltatoreDebug(this);
 	JPanel north = new JPanel();

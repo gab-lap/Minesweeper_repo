@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
 import main.Cell;
@@ -13,6 +14,7 @@ import main.DebugPanel;
 import main.Field;
 
 public class ServerManager implements Runnable {
+	public static boolean won = false;
     private final Socket clientSocket; 
     static ObjectOutputStream outputStream;
     static ObjectInputStream inputStream;
@@ -116,16 +118,20 @@ public class ServerManager implements Runnable {
 			outputStream.flush();
 			outputStream.writeUTF("HIHIHI");
 			outputStream.flush();
-			int counter = 0;
 			while(true) {
-    			
-    			//outputStream.writeUTF("quit");
-    			//outputStream.flush();
-    			//message = "quit";
-    			System.out.println(counter);
-    			if (message.equals("quit") || counter == 100)
-    				break;
-    			counter++;
+				if (won) {
+            		outputStream.writeUTF("won");
+            		outputStream.flush();
+            		won = false;
+        		}
+				if (inputStream.available() > 0) {
+					String message = inputStream.readUTF();
+					if (message.equals("won")) {
+						JOptionPane.showMessageDialog(null, "Your opponent won, you LOST");
+					}
+					else
+						System.out.println(message);
+				}
 			}
         } 
         catch (IOException e) { 

@@ -1,5 +1,6 @@
 package main.client_server;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.EOFException;
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
 import main.Cell;
@@ -14,6 +16,7 @@ import main.DebugPanel;
 import main.Field;
 
 public class ClientManager implements Runnable {
+	public static boolean won = false;
     private final Socket socket; 
     static ObjectInputStream inputStream;
     static ObjectOutputStream outputStream;
@@ -40,10 +43,19 @@ public class ClientManager implements Runnable {
         System.out.println("CLIENT MANAGER RUNNING IN A SEPARATE THREAD");
         while (true) {
         	try {
+        		if (won) {
+            		outputStream.writeUTF("won");
+            		outputStream.flush();
+            		won = false;
+        		}
+        		
 				if (inputStream.available() > 0) {
 					if (!receivingData) {
 						message = (String) inputStream.readUTF();
-						if (message.equals("SENDING-DATA")) {
+						if (message.equals("won")) {
+							JOptionPane.showMessageDialog(null, "Your opponent won, you LOST");
+						}
+						else if (message.equals("SENDING-DATA")) {
 							receivingData = true;
 							System.out.println("MESSAGE SHOULD BE SENDING DATA: " + message);
 						}
@@ -54,6 +66,10 @@ public class ClientManager implements Runnable {
 					if (receivingData) {
 						try {
 							field = (Field) inputStream.readObject();
+							debugPanel.finestra.contentPane.remove(debugPanel.finestra.panel);
+							debugPanel.finestra.contentPane.add(field.finestra.panel, BorderLayout.CENTER);
+							debugPanel.finestra.repaint();
+							debugPanel.finestra.revalidate();
 						} catch (ClassNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

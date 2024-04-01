@@ -19,10 +19,10 @@ public class Finestra extends javax.swing.JFrame implements Serializable{
 	JPanel east = new JPanel();
 	JPanel south = new JPanel();
 	JPanel west = new JPanel();
-	JPanel panel;
-	Field field;
+	public JPanel panel;
+	public Field field;
 	public JButton smiley = new JButton(new ImageIcon(getClass().getResource("images/smiley.png")));
-	Container contentPane = this.getContentPane();
+	public Container contentPane = this.getContentPane();
 	public MenuBarListener menuBarListener = new MenuBarListener();
 	public Finestra(int height, int width) {
 		super(titolo);
