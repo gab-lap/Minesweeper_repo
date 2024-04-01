@@ -12,7 +12,7 @@ import main.Cell;
 import main.DebugPanel;
 import main.Field;
 
-public class ServerHandler implements Runnable {
+public class ClientManager implements Runnable {
     //private final Socket clientSocket; 
     static ObjectOutputStream outputStream;
     static ObjectInputStream inputStream;
@@ -22,7 +22,7 @@ public class ServerHandler implements Runnable {
     Cell startingCell;
     public static String message = "";
     
-    public ServerHandler(Socket socket, Field field, Cell startingCell) 
+    public ClientManager(Socket socket, Field field, Cell startingCell) 
     { 
        // this.clientSocket = socket; 
         this.field = field;

@@ -34,7 +34,7 @@ public class UDPServer implements Runnable{
     			System.out.println("SJKHBKJSGBIJUSGIUGSKIUGSJUSG");
     			socket = ss.accept();
     			debugPanel.stopHosting.setEnabled(true);
-    			ClientHandler clientSock = new ClientHandler(socket, field, startingCell);
+    			ServerManager clientSock = new ServerManager(socket, field, startingCell);
     			new Thread(clientSock).start();
     		
     	}catch (IOException e) {

@@ -14,7 +14,7 @@ import java.net.Socket;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.client_server.ClientHandler;
+import main.client_server.ServerManager;
 import main.client_server.UDPServer;
 
 class Connect extends Thread implements Runnable {
@@ -39,7 +39,7 @@ class StopHosting{
 		serverSocket = UDPServer.ss;
 		//debugPanel.host.setBackground(new Color(227, 26, 34));
 		if (serverSocket != null)
-				ClientHandler.message = "quit";
+				ServerManager.message = "quit";
 	}
 }
 
