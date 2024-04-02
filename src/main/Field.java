@@ -437,6 +437,7 @@ public class Field extends JFrame implements Serializable, Cloneable{
 		gameEnd = true;
 	}
 	public void newGame(Field field, DebugPanel debugPanel) {
+		
 		field.finestra.contentPane.remove(field.finestra.panel);   
 		field.finestra.panel = new JPanel(new GridLayout(field.height, field.width, 0, 0));
 		Finestra fin = field.finestra;

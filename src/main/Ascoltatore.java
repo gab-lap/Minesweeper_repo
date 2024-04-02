@@ -182,6 +182,9 @@ public class Ascoltatore implements ActionListener, Serializable{
 		}
 		else if (command.equals("smiley")) {
 			field.newGame(field, debugPanel);
+			debugPanel.connect.setEnabled(true);
+			debugPanel.clear.setEnabled(false);
+			debugPanel.multiplayerON.setEnabled(true);
 		}
 		
 	}

@@ -21,11 +21,12 @@ public class UDPServer implements Runnable{
     		
     		InetAddress serverAddress = InetAddress.getLocalHost();
     		System.out.println("Server started. Listening on address " + serverAddress.getHostAddress() + ", port " + PORT + "...");
-    		JOptionPane.showMessageDialog(null, "Game code: " + "\"" + serverAddress.getHostAddress() + "\"");
+    		
     		ss = new ServerSocket(PORT);
     		ss.setReuseAddress(true);
     		
     			System.out.println("SJKHBKJSGBIJUSGIUGSKIUGSJUSG");
+    			JOptionPane.showMessageDialog(null, "Game code: " + "\"" + serverAddress.getHostAddress() + "\"");
     			socket = ss.accept();
     			debugPanel.stopHosting.setEnabled(true);
     			ServerManager clientSock = new ServerManager(socket, field, startingCell);

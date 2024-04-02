@@ -134,9 +134,11 @@ public class ServerManager implements Runnable {
 					String message = inputStream.readUTF();
 					if (message.equals("won")) {
 						JOptionPane.showMessageDialog(null, "Your opponent WON, you LOST");
+						field.endGame();
 					}
 					else if (message.equals("lost")) {
 						JOptionPane.showMessageDialog(null, "Your opponent LOST, you WON");
+						field.endGame();
 					}
 					else
 						System.out.println(message);

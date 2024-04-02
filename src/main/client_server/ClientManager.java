@@ -60,9 +60,11 @@ public class ClientManager implements Runnable {
 						message = (String) inputStream.readUTF();
 						if (message.equals("won")) {
 							JOptionPane.showMessageDialog(null, "Your opponent won, you LOST");
+							field.endGame();
 						}
 						else if (message.equals("lost")) {
 							JOptionPane.showMessageDialog(null, "Your opponent LOST, you WON");
+							field.endGame();
 						}
 						else if (message.equals("SENDING-DATA")) {
 							receivingData = true;
