@@ -1,20 +1,13 @@
 package main.client_server;
-
-import java.awt.Color;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.*;
-
-import javax.swing.border.MatteBorder;
-
+import javax.swing.JOptionPane;
 import main.Cell;
 import main.DebugPanel;
 import main.Field;
 
 public class UDPServer implements Runnable{
     private static final int PORT = 4000;
-    private static final int TIMEOUT = 30000; //30 secondi
     public static ServerSocket ss;
     static Socket socket;
     public static DebugPanel debugPanel;
@@ -28,6 +21,7 @@ public class UDPServer implements Runnable{
     		
     		InetAddress serverAddress = InetAddress.getLocalHost();
     		System.out.println("Server started. Listening on address " + serverAddress.getHostAddress() + ", port " + PORT + "...");
+    		JOptionPane.showMessageDialog(null, "Game code: " + "\"" + serverAddress.getHostAddress() + "\"");
     		ss = new ServerSocket(PORT);
     		ss.setReuseAddress(true);
     		

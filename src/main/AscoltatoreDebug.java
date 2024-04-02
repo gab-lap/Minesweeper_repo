@@ -12,6 +12,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import main.client_server.ServerManager;
@@ -26,6 +27,7 @@ class Connect extends Thread implements Runnable {
 	public void start() {
 		UDPClient.debugPanel = debugPanel;
 		try {
+			UDPClient.IP = JOptionPane.showInputDialog("Insert the game code: ");
 			UDPClient.startClient();
 		} catch (IOException e) {
 			System.out.println("ERROR IN Connect class in AscoltatoreDebug");

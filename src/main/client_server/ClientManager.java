@@ -17,6 +17,7 @@ import main.Field;
 
 public class ClientManager implements Runnable {
 	public static boolean won = false;
+	public static boolean lost = false;
     private final Socket socket; 
     static ObjectInputStream inputStream;
     static ObjectOutputStream outputStream;
@@ -49,12 +50,19 @@ public class ClientManager implements Runnable {
             		outputStream.flush();
             		won = false;
         		}
-        		
+        		else if (lost) {
+            		outputStream.writeUTF("lost");
+            		outputStream.flush();
+            		lost = false;
+        		}
 				if (inputStream.available() > 0) {
 					if (!receivingData) {
 						message = (String) inputStream.readUTF();
 						if (message.equals("won")) {
 							JOptionPane.showMessageDialog(null, "Your opponent won, you LOST");
+						}
+						else if (message.equals("lost")) {
+							JOptionPane.showMessageDialog(null, "Your opponent LOST, you WON");
 						}
 						else if (message.equals("SENDING-DATA")) {
 							receivingData = true;

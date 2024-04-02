@@ -1,20 +1,14 @@
 package main;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
-
 import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.Serializable;
-
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
-
 import main.client_server.ClientManager;
 import main.client_server.ServerManager;
 
@@ -32,6 +26,14 @@ class RevealCells{
 			cell.button.setBackground(new Color(231, 12, 12));
 			cell.button.setEnabled(false);
 			cell.checked = true;
+			if (field.multiplayer) {
+				System.out.println("server lost");
+				ServerManager.lost = true;
+			}
+			else {
+				System.out.println("client lost");
+				ClientManager.lost = true;
+			}
 			field.endGame();
 			JOptionPane.showMessageDialog(null, "Game Over");  
 			return;
